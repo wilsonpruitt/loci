@@ -12,7 +12,14 @@ export type Pericope = {
   ref: string;
   tags: string[];
   text: string;
-  marker?:string;
+  marker?: string;
+  parallel?: { ref: string; text: string };
+};
+
+export type ChapterSection = {
+  label: string;
+  from: number;
+  to: number;
 };
 
 export type Book = {
@@ -23,7 +30,8 @@ export type Book = {
   themes: Record<string, Theme>;
   pericopes: Pericope[];
   features?: {
-    marker?:boolean;
+    marker?: boolean;
   };
   howToRead?: string;
+  chapterSections?: ChapterSection[];
 };

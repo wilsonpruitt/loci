@@ -1,6 +1,7 @@
 import type { Book } from "@/lib/types";
 import leviticus from "./leviticus.json";
 import numbers from "./numbers.json";
+import chronicles from "./chronicles.json";
 import ecclesiastes from "./ecclesiastes.json";
 import song from "./song.json";
 import lamentations from "./lamentations.json";
@@ -9,6 +10,7 @@ import ezekiel from "./ezekiel.json";
 export const BOOKS: Book[] = [
   leviticus as Book,
   numbers as Book,
+  chronicles as Book,
   ecclesiastes as Book,
   song as Book,
   lamentations as Book,

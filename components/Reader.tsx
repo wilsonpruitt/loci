@@ -19,6 +19,21 @@ export default function Reader({ book }: { book: Book }) {
   const [legendOpen, setLegendOpen] = useState(true);
   const [plainMode, setPlainMode] = useState(false);
   const [tip, setTip] = useState<TipState>(null);
+  const [expandedParallels, setExpandedParallels] = useState<Set<string>>(new Set());
+
+  const toggleParallel = (id: string) => {
+    setExpandedParallels((prev) => {
+      const n = new Set(prev);
+      if (n.has(id)) n.delete(id);
+      else n.add(id);
+      return n;
+    });
+  };
+
+  const chapterHeading = (ref: string): string => {
+    const prefix = ref.split(":")[0];
+    return /^\d+$/.test(prefix) ? `Chapter ${prefix}` : prefix;
+  };
 
   useEffect(() => {
     if (!document.getElementById("themes-fonts")) {
@@ -228,54 +243,69 @@ export default function Reader({ book }: { book: Book }) {
 
           <div style={S.chapterNav}>
             <div style={S.chapterLabel}>Chapters</div>
-            <div style={S.chapterGrid}>
-              {chapters.map((ch) => {
-                const isActive = activeChapter === ch;
-                const hasText = book.pericopes.some(
-                  (p) => p.ch === ch && p.text.length > 0
-                );
-                const inActiveSet =
-                  activeChapterSet === null || activeChapterSet.has(ch);
-                const faded = activeChapterSet !== null && !inActiveSet;
+            {(book.chapterSections ?? [{ label: "", from: chapters[0] ?? 1, to: chapters[chapters.length - 1] ?? 1 }]).map((section) => (
+              <div key={section.label || "all"} style={{ marginBottom: 10 }}>
+                {section.label && (
+                  <div style={S.chapterSectionLabel}>{section.label}</div>
+                )}
+                <div style={S.chapterGrid}>
+                  {chapters
+                    .filter((ch) => ch >= section.from && ch <= section.to)
+                    .map((ch) => {
+                      const isActive = activeChapter === ch;
+                      const hasText = book.pericopes.some(
+                        (p) => p.ch === ch && p.text.length > 0
+                      );
+                      const inActiveSet =
+                        activeChapterSet === null || activeChapterSet.has(ch);
+                      const faded =
+                        activeChapterSet !== null && !inActiveSet;
 
-                let bg = "transparent";
-                let color = hasText ? "#4a3d30" : "#c0b8a8";
-                let borderColor = hasText ? "#c9b99a" : "#e0dbd0";
+                      let bg = "transparent";
+                      let color = hasText ? "#4a3d30" : "#c0b8a8";
+                      let borderColor = hasText ? "#c9b99a" : "#e0dbd0";
 
-                if (isActive) {
-                  bg = "#4a3d30";
-                  color = "#f5f0e8";
-                  borderColor = "#4a3d30";
-                } else if (faded) {
-                  color = "#c8bfae";
-                  borderColor = "#e8e0d0";
-                } else if (tintTheme && hasText) {
-                  bg = tintTheme.bg;
-                  color = tintTheme.color;
-                  borderColor = tintTheme.color;
-                }
+                      if (isActive) {
+                        bg = "#4a3d30";
+                        color = "#f5f0e8";
+                        borderColor = "#4a3d30";
+                      } else if (faded) {
+                        color = "#c8bfae";
+                        borderColor = "#e8e0d0";
+                      } else if (tintTheme && hasText) {
+                        bg = tintTheme.bg;
+                        color = tintTheme.color;
+                        borderColor = tintTheme.color;
+                      }
 
-                return (
-                  <button
-                    key={ch}
-                    className="themes-ch-btn"
-                    onClick={() =>
-                      setActiveChapter(activeChapter === ch ? null : ch)
-                    }
-                    style={{
-                      ...S.chBtn,
-                      backgroundColor: bg,
-                      color,
-                      borderColor,
-                      opacity: faded ? 0.4 : 1,
-                      fontWeight: !isActive && inActiveSet && tintTheme ? 600 : 500,
-                    }}
-                  >
-                    {ch}
-                  </button>
-                );
-              })}
-            </div>
+                      const displayLabel = section.label
+                        ? ch - section.from + 1
+                        : ch;
+
+                      return (
+                        <button
+                          key={ch}
+                          className="themes-ch-btn"
+                          onClick={() =>
+                            setActiveChapter(activeChapter === ch ? null : ch)
+                          }
+                          style={{
+                            ...S.chBtn,
+                            backgroundColor: bg,
+                            color,
+                            borderColor,
+                            opacity: faded ? 0.4 : 1,
+                            fontWeight:
+                              !isActive && inActiveSet && tintTheme ? 600 : 500,
+                          }}
+                        >
+                          {displayLabel}
+                        </button>
+                      );
+                    })}
+                </div>
+              </div>
+            ))}
             {activeChapter && (
               <button
                 onClick={() => setActiveChapter(null)}
@@ -295,7 +325,9 @@ export default function Reader({ book }: { book: Book }) {
           {grouped.map(([ch, passages]) => (
             <div key={ch} style={S.chapterBlock}>
               <div style={S.chapterHead}>
-                <span style={S.chapterNum}>Chapter {ch}</span>
+                <span style={S.chapterNum}>
+                  {chapterHeading(passages[0].ref)}
+                </span>
               </div>
 
               {passages.map((p) => (
@@ -346,6 +378,23 @@ export default function Reader({ book }: { book: Book }) {
                   >
                     {p.text}
                   </p>
+                  {p.parallel && (
+                    <>
+                      <button
+                        onClick={() => toggleParallel(p.id)}
+                        style={S.parallelToggle}
+                      >
+                        {expandedParallels.has(p.id) ? "× Hide" : "↔ Compare with"}{" "}
+                        {p.parallel.ref}
+                      </button>
+                      {expandedParallels.has(p.id) && (
+                        <div style={S.parallelPanel}>
+                          <div style={S.parallelLabel}>{p.parallel.ref}</div>
+                          <p style={S.parallelText}>{p.parallel.text}</p>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
               ))}
             </div>
@@ -612,6 +661,53 @@ const S: Record<string, CSSProperties> = {
   refSpacer: { flex: 1 },
   refDots: { display: "flex", gap: 4, flexShrink: 0 },
   dot: { width: 10, height: 10, borderRadius: "50%", display: "inline-block" },
+  parallelToggle: {
+    marginTop: 8,
+    padding: "4px 0 0 0",
+    background: "transparent",
+    border: "none",
+    cursor: "pointer",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontSize: 12,
+    fontWeight: 600,
+    letterSpacing: 1.5,
+    textTransform: "uppercase",
+    color: "#8a7a6a",
+  },
+  parallelPanel: {
+    marginTop: 8,
+    padding: "12px 16px",
+    background: "rgba(122,110,90,0.07)",
+    borderLeft: "3px solid #c9b99a",
+    borderRadius: "0 4px 4px 0",
+  },
+  parallelLabel: {
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontSize: 13,
+    fontWeight: 600,
+    letterSpacing: 1,
+    color: "#6b5d4e",
+    marginBottom: 6,
+    textTransform: "uppercase",
+  },
+  parallelText: {
+    fontFamily: "'Crimson Pro', Georgia, serif",
+    fontSize: 15.5,
+    lineHeight: 1.7,
+    color: "#4a3d30",
+    fontWeight: 300,
+    margin: 0,
+  },
+  chapterSectionLabel: {
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontSize: 11,
+    fontWeight: 600,
+    letterSpacing: 1.5,
+    textTransform: "uppercase",
+    color: "#8a7a6a",
+    marginBottom: 4,
+    marginTop: 4,
+  },
   tooltip: {
     position: "fixed",
     zIndex: 100,
