@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect, type CSSProperties } from "react";
+import Link from "next/link";
 import type { Book } from "@/lib/types";
 
 const FONT_URL =
@@ -111,6 +112,7 @@ export default function Reader({ book }: { book: Book }) {
     <div style={S.root}>
       <style>{`
         .themes-passage:hover { background: rgba(201,185,154,0.08) !important; }
+        .themes-home-link:hover { color: #f5f0e8 !important; }
         .themes-tag-btn:hover { transform: translateX(1px); }
         .themes-ch-btn:hover { background: rgba(92,64,51,0.12) !important; }
         @media (max-width: 800px) {
@@ -121,6 +123,9 @@ export default function Reader({ book }: { book: Book }) {
       `}</style>
 
       <header style={S.header}>
+        <Link href="/" className="themes-home-link" style={S.homeLink}>
+          ← LOCI
+        </Link>
         <div style={S.headerOrnament}>— ✦ —</div>
         <h1 style={S.title}>{book.name.toUpperCase()}</h1>
         <div style={S.titleRule} />
@@ -366,6 +371,19 @@ const S: Record<string, CSSProperties> = {
     background: "#2c2418",
     padding: "44px 24px 36px",
     textAlign: "center",
+    position: "relative",
+  },
+  homeLink: {
+    position: "absolute",
+    top: 20,
+    left: 24,
+    color: "#c9a96e",
+    textDecoration: "none",
+    fontFamily: "'Cormorant Garamond', Georgia, serif",
+    fontSize: 13,
+    fontWeight: 600,
+    letterSpacing: 3,
+    transition: "color 0.15s",
   },
   headerOrnament: {
     color: "#c9a96e",
