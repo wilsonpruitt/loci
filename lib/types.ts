@@ -12,7 +12,7 @@ export type Pericope = {
   ref: string;
   tags: string[];
   text: string;
-  acrostic?: string;
+  marker?:string;
 };
 
 export type Book = {
@@ -23,7 +23,7 @@ export type Book = {
   themes: Record<string, Theme>;
   pericopes: Pericope[];
   features?: {
-    acrostic?: boolean;
+    marker?:boolean;
   };
   howToRead?: string;
 };

@@ -31,7 +31,7 @@ export default function Reader({ book }: { book: Book }) {
   }, []);
 
   const TAGS = book.themes;
-  const showAcrostic = !!book.features?.acrostic;
+  const showMarker = !!book.features?.marker;
 
   const chapters = useMemo(
     () => [...new Set(book.pericopes.map((p) => p.ch))].sort((a, b) => a - b),
@@ -270,15 +270,15 @@ export default function Reader({ book }: { book: Book }) {
                   style={S.passage}
                 >
                   <div style={S.refLine}>
-                    {showAcrostic && (
+                    {showMarker && (
                       <span
                         style={{
-                          ...S.acrostic,
-                          opacity: p.acrostic ? 1 : 0,
+                          ...S.marker,
+                          opacity: p.marker ? 1 : 0,
                         }}
-                        aria-hidden={!p.acrostic}
+                        aria-hidden={!p.marker}
                       >
-                        {p.acrostic || "·"}
+                        {p.marker || "·"}
                       </span>
                     )}
                     <span style={S.refText}>{p.ref}</span>
@@ -551,7 +551,7 @@ const S: Record<string, CSSProperties> = {
     gap: 10,
     marginBottom: 6,
   },
-  acrostic: {
+  marker: {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 22,
     fontWeight: 600,
