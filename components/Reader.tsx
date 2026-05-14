@@ -40,6 +40,19 @@ export default function Reader({ book }: { book: Book }) {
   const markerColWidth = maxMarkerLen > 1 ? 64 : 28;
   const markerFontSize = maxMarkerLen > 1 ? 13 : 22;
 
+  const activeChapterSet = useMemo(() => {
+    if (activeTags.size === 0) return null;
+    const set = new Set<number>();
+    book.pericopes.forEach((p) => {
+      if (p.tags.some((t) => activeTags.has(t))) set.add(p.ch);
+    });
+    return set;
+  }, [book, activeTags]);
+
+  const singleActiveTheme =
+    activeTags.size === 1 ? Array.from(activeTags)[0] : null;
+  const tintTheme = singleActiveTheme ? TAGS[singleActiveTheme] : null;
+
   const chapters = useMemo(
     () => [...new Set(book.pericopes.map((p) => p.ch))].sort((a, b) => a - b),
     [book]
@@ -221,6 +234,27 @@ export default function Reader({ book }: { book: Book }) {
                 const hasText = book.pericopes.some(
                   (p) => p.ch === ch && p.text.length > 0
                 );
+                const inActiveSet =
+                  activeChapterSet === null || activeChapterSet.has(ch);
+                const faded = activeChapterSet !== null && !inActiveSet;
+
+                let bg = "transparent";
+                let color = hasText ? "#4a3d30" : "#c0b8a8";
+                let borderColor = hasText ? "#c9b99a" : "#e0dbd0";
+
+                if (isActive) {
+                  bg = "#4a3d30";
+                  color = "#f5f0e8";
+                  borderColor = "#4a3d30";
+                } else if (faded) {
+                  color = "#c8bfae";
+                  borderColor = "#e8e0d0";
+                } else if (tintTheme && hasText) {
+                  bg = tintTheme.bg;
+                  color = tintTheme.color;
+                  borderColor = tintTheme.color;
+                }
+
                 return (
                   <button
                     key={ch}
@@ -230,17 +264,11 @@ export default function Reader({ book }: { book: Book }) {
                     }
                     style={{
                       ...S.chBtn,
-                      backgroundColor: isActive ? "#4a3d30" : "transparent",
-                      color: isActive
-                        ? "#f5f0e8"
-                        : hasText
-                          ? "#4a3d30"
-                          : "#c0b8a8",
-                      borderColor: isActive
-                        ? "#4a3d30"
-                        : hasText
-                          ? "#c9b99a"
-                          : "#e0dbd0",
+                      backgroundColor: bg,
+                      color,
+                      borderColor,
+                      opacity: faded ? 0.4 : 1,
+                      fontWeight: !isActive && inActiveSet && tintTheme ? 600 : 500,
                     }}
                   >
                     {ch}
