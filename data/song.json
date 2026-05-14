@@ -6,7 +6,7 @@
   "features": {
     "marker": true
   },
-  "howToRead": "Song of Songs is dialogue — three voices speak across the eight chapters: the Beloved (the woman), the Lover (the man), and a Chorus of the daughters of Jerusalem. Each pericope is marked in the margin with the speaker: B, L, or C (N marks the brief superscription). Voice attribution has long been debated; this reader follows common scholarly consensus, and a few assignments remain contested. The three-fold refrain 'do not arouse or awaken love until it pleases' (2:7, 3:5, 8:4) is shown as a theme of its own — the structural pivots of the poem.",
+  "howToRead": "Song of Songs is dialogue — three voices speak across the eight chapters: the Beloved (a woman), the Lover (a man), and a Chorus of the daughters of Jerusalem. Each pericope is marked in the margin with the speaker. Voice attribution has long been debated; this reader follows common scholarly consensus, and a few assignments remain contested. The three-fold refrain 'do not arouse or awaken love until it pleases' (2:7, 3:5, 8:4) is shown as a theme of its own — the structural pivots of the poem.",
   "themes": {
     "desire": {
       "label": "Desire & Longing",
@@ -63,7 +63,6 @@
       "id": "1.1",
       "ch": 1,
       "ref": "1:1",
-      "marker": "N",
       "tags": [
         "royal"
       ],
@@ -73,7 +72,7 @@
       "id": "1.2",
       "ch": 1,
       "ref": "1:2–4",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "desire",
         "royal",
@@ -85,7 +84,7 @@
       "id": "1.3",
       "ch": 1,
       "ref": "1:5–7",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "body",
         "garden",
@@ -97,7 +96,7 @@
       "id": "1.4",
       "ch": 1,
       "ref": "1:8",
-      "marker": "C",
+      "marker": "Chorus",
       "tags": [
         "seeking",
         "chorus"
@@ -108,7 +107,7 @@
       "id": "1.5",
       "ch": 1,
       "ref": "1:9–11",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "body"
       ],
@@ -118,7 +117,7 @@
       "id": "1.6",
       "ch": 1,
       "ref": "1:12–14",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "desire",
         "garden"
@@ -129,7 +128,7 @@
       "id": "1.7",
       "ch": 1,
       "ref": "1:15",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "body"
       ],
@@ -139,7 +138,7 @@
       "id": "1.8",
       "ch": 1,
       "ref": "1:16–17",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "garden",
         "body"
@@ -150,7 +149,7 @@
       "id": "2.1",
       "ch": 2,
       "ref": "2:1",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "body",
         "garden"
@@ -161,7 +160,7 @@
       "id": "2.2",
       "ch": 2,
       "ref": "2:2",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "body",
         "garden"
@@ -172,7 +171,7 @@
       "id": "2.3",
       "ch": 2,
       "ref": "2:3–7",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "desire",
         "body",
@@ -184,7 +183,7 @@
       "id": "2.4",
       "ch": 2,
       "ref": "2:8–13",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "seeking",
         "garden",
@@ -196,7 +195,7 @@
       "id": "2.5",
       "ch": 2,
       "ref": "2:14",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "desire"
       ],
@@ -206,7 +205,7 @@
       "id": "2.6",
       "ch": 2,
       "ref": "2:15",
-      "marker": "C",
+      "marker": "Chorus",
       "tags": [
         "garden"
       ],
@@ -216,7 +215,7 @@
       "id": "2.7",
       "ch": 2,
       "ref": "2:16–17",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "desire",
         "body"
@@ -227,7 +226,7 @@
       "id": "3.1",
       "ch": 3,
       "ref": "3:1–5",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "seeking",
         "adjuration"
@@ -238,7 +237,7 @@
       "id": "3.2",
       "ch": 3,
       "ref": "3:6–11",
-      "marker": "C",
+      "marker": "Chorus",
       "tags": [
         "royal"
       ],
@@ -248,7 +247,7 @@
       "id": "4.1",
       "ch": 4,
       "ref": "4:1–7",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "body"
       ],
@@ -258,7 +257,7 @@
       "id": "4.2",
       "ch": 4,
       "ref": "4:8–11",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "desire",
         "garden",
@@ -270,7 +269,7 @@
       "id": "4.3",
       "ch": 4,
       "ref": "4:12–15",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "garden",
         "body"
@@ -281,7 +280,7 @@
       "id": "4.4",
       "ch": 4,
       "ref": "4:16",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "desire",
         "garden"
@@ -292,7 +291,7 @@
       "id": "5.1",
       "ch": 5,
       "ref": "5:1",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "desire",
         "garden",
@@ -304,7 +303,7 @@
       "id": "5.2",
       "ch": 5,
       "ref": "5:2–8",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "seeking",
         "adjuration",
@@ -316,7 +315,7 @@
       "id": "5.3",
       "ch": 5,
       "ref": "5:9",
-      "marker": "C",
+      "marker": "Chorus",
       "tags": [
         "seeking",
         "chorus"
@@ -327,7 +326,7 @@
       "id": "5.4",
       "ch": 5,
       "ref": "5:10–16",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "body",
         "desire"
@@ -338,7 +337,7 @@
       "id": "6.1",
       "ch": 6,
       "ref": "6:1",
-      "marker": "C",
+      "marker": "Chorus",
       "tags": [
         "seeking",
         "chorus"
@@ -349,7 +348,7 @@
       "id": "6.2",
       "ch": 6,
       "ref": "6:2–3",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "desire",
         "garden"
@@ -360,7 +359,7 @@
       "id": "6.3",
       "ch": 6,
       "ref": "6:4–10",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "body"
       ],
@@ -370,7 +369,7 @@
       "id": "6.4",
       "ch": 6,
       "ref": "6:11–13",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "garden",
         "royal",
@@ -382,7 +381,7 @@
       "id": "7.1",
       "ch": 7,
       "ref": "7:1–5",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "body"
       ],
@@ -392,7 +391,7 @@
       "id": "7.2",
       "ch": 7,
       "ref": "7:6–9",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "desire",
         "body"
@@ -403,7 +402,7 @@
       "id": "7.3",
       "ch": 7,
       "ref": "7:10–13",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "desire",
         "garden"
@@ -414,7 +413,7 @@
       "id": "8.1",
       "ch": 8,
       "ref": "8:1–4",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "desire",
         "adjuration"
@@ -425,7 +424,7 @@
       "id": "8.2",
       "ch": 8,
       "ref": "8:5",
-      "marker": "C",
+      "marker": "Chorus",
       "tags": [
         "seeking"
       ],
@@ -435,7 +434,7 @@
       "id": "8.3",
       "ch": 8,
       "ref": "8:6–7",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "desire"
       ],
@@ -445,7 +444,7 @@
       "id": "8.4",
       "ch": 8,
       "ref": "8:8–9",
-      "marker": "C",
+      "marker": "Chorus",
       "tags": [
         "body",
         "chorus"
@@ -456,7 +455,7 @@
       "id": "8.5",
       "ch": 8,
       "ref": "8:10",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "body"
       ],
@@ -466,7 +465,7 @@
       "id": "8.6",
       "ch": 8,
       "ref": "8:11–12",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "royal",
         "garden"
@@ -477,7 +476,7 @@
       "id": "8.7",
       "ch": 8,
       "ref": "8:13",
-      "marker": "L",
+      "marker": "He",
       "tags": [
         "desire"
       ],
@@ -487,7 +486,7 @@
       "id": "8.8",
       "ch": 8,
       "ref": "8:14",
-      "marker": "B",
+      "marker": "She",
       "tags": [
         "desire",
         "garden"

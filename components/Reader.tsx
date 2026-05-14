@@ -32,6 +32,13 @@ export default function Reader({ book }: { book: Book }) {
 
   const TAGS = book.themes;
   const showMarker = !!book.features?.marker;
+  const maxMarkerLen = useMemo(
+    () =>
+      book.pericopes.reduce((m, p) => Math.max(m, p.marker?.length ?? 0), 0),
+    [book]
+  );
+  const markerColWidth = maxMarkerLen > 1 ? 64 : 28;
+  const markerFontSize = maxMarkerLen > 1 ? 13 : 22;
 
   const chapters = useMemo(
     () => [...new Set(book.pericopes.map((p) => p.ch))].sort((a, b) => a - b),
@@ -274,7 +281,12 @@ export default function Reader({ book }: { book: Book }) {
                       <span
                         style={{
                           ...S.marker,
+                          width: markerColWidth,
+                          fontSize: markerFontSize,
+                          fontStyle: maxMarkerLen > 1 ? "italic" : "normal",
                           opacity: p.marker ? 1 : 0,
+                          textAlign: maxMarkerLen > 1 ? "right" : "center",
+                          paddingRight: maxMarkerLen > 1 ? 8 : 0,
                         }}
                         aria-hidden={!p.marker}
                       >
