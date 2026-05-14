@@ -197,7 +197,7 @@ export default function Reader({ book }: { book: Book }) {
                 color: plainMode ? "#f5f0e8" : "#4a3d30",
               }}
             >
-              {plainMode ? "Show highlights" : "Plain reading"}
+              {plainMode ? "Show highlights" : "Hide highlights"}
             </button>
           </div>
 
