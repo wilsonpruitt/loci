@@ -6,7 +6,7 @@
   "features": {
     "marker": true
   },
-  "howToRead": "Song of Songs is dialogue — three voices speak across the eight chapters: the Beloved (a woman), the Lover (a man), and a Chorus of the daughters of Jerusalem. Each pericope is marked in the margin with the speaker. Voice attribution has long been debated; this reader follows common scholarly consensus, and a few assignments remain contested. The three-fold refrain 'do not arouse or awaken love until it pleases' (2:7, 3:5, 8:4) is shown as a theme of its own — the structural pivots of the poem.",
+  "howToRead": "Song of Songs is dialogue — three voices speak across the eight chapters: the Beloved (a woman), the Lover (a man), and a Chorus of the daughters of Jerusalem. Each pericope is marked in the margin with the speaker. Voice attribution has long been debated; a trailing '?' marks the assignments where scholars disagree most — read those passages with the question open. The three-fold refrain 'do not arouse or awaken love until it pleases' (2:7, 3:5, 8:4) is shown as a theme of its own — the structural pivots of the poem.",
   "themes": {
     "desire": {
       "label": "Desire & Longing",
@@ -96,7 +96,7 @@
       "id": "1.4",
       "ch": 1,
       "ref": "1:8",
-      "marker": "Chorus",
+      "marker": "Chorus?",
       "tags": [
         "seeking",
         "chorus"
@@ -205,7 +205,7 @@
       "id": "2.6",
       "ch": 2,
       "ref": "2:15",
-      "marker": "Chorus",
+      "marker": "Chorus?",
       "tags": [
         "garden"
       ],
@@ -369,7 +369,7 @@
       "id": "6.4",
       "ch": 6,
       "ref": "6:11–13",
-      "marker": "She",
+      "marker": "She?",
       "tags": [
         "garden",
         "royal",
@@ -444,7 +444,7 @@
       "id": "8.4",
       "ch": 8,
       "ref": "8:8–9",
-      "marker": "Chorus",
+      "marker": "Chorus?",
       "tags": [
         "body",
         "chorus"
@@ -465,7 +465,7 @@
       "id": "8.6",
       "ch": 8,
       "ref": "8:11–12",
-      "marker": "She",
+      "marker": "She?",
       "tags": [
         "royal",
         "garden"
