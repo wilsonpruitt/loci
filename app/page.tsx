@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { BOOKS } from "@/data/books";
+import { BOOKS, getBook } from "@/data/books";
+import LandingExample from "@/components/LandingExample";
 
 export default function Home() {
+  const leviticus = getBook("leviticus");
   return (
     <div style={{ minHeight: "100vh", background: "#f5f0e8", color: "#2c2418" }}>
       <header
@@ -65,7 +67,24 @@ export default function Home() {
           shows where the text holds more than one thing at once.
         </p>
 
-        <div style={{ marginTop: 40, display: "grid", gap: 16 }}>
+        {leviticus && <LandingExample book={leviticus} pericopeId="5.1" />}
+
+        <h2
+          style={{
+            marginTop: 48,
+            marginBottom: 16,
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontSize: 15,
+            fontWeight: 600,
+            letterSpacing: 3,
+            textTransform: "uppercase",
+            color: "#8a7a6a",
+          }}
+        >
+          The Books
+        </h2>
+
+        <div style={{ display: "grid", gap: 16 }}>
           {BOOKS.map((b) => (
             <Link
               key={b.slug}
